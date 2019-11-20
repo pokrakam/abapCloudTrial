@@ -2,7 +2,7 @@
 
 CLASS lcl_html IMPLEMENTATION.
 
-  METHOD constructor.
+  METHOD initialize.
     add( `<!DOCTYPE html>`                                                         ).
     add( `<html>`                                                                  ).
     add( `  <head>`                                                                ).
@@ -16,6 +16,10 @@ CLASS lcl_html IMPLEMENTATION.
 
   METHOD add.
     html = html && i_line && cl_abap_char_utilities=>newline.
+  ENDMETHOD.
+
+  METHOD add_row.
+    add( `<tr><td>` && i_line && `</td></tr>` ).
   ENDMETHOD.
 
   METHOD render.
